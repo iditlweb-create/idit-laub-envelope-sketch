@@ -911,7 +911,7 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
       <div class="stage" id="stage" aria-label="מוקאפים של אתרים שבניתי" data-cursor="הזיזו">
         <div class="d-scroll"><div class="d-tilt"><div class="devices">
           <div class="laptop">
-            <div class="lid"><div class="screen shot"><img class="vid-still" src="assets/video/site-still.jpg" alt="אתר נובולה שעיצבתי ובניתי" width="1600" height="756" fetchpriority="high"><canvas id="hero-cv" width="848" height="432" aria-hidden="true"></canvas><video id="hero-vid" src="assets/video/site-scrub.mp4" muted playsinline preload="auto" aria-hidden="true" tabindex="-1"></video></div></div>
+            <div class="lid"><div class="screen shot"><img class="vid-still" src="assets/video/site-still.jpg" alt="אתר נובולה שעיצבתי ובניתי" width="1600" height="748" fetchpriority="high"><canvas id="hero-cv" width="1280" height="598" aria-hidden="true"></canvas><video id="hero-vid" src="assets/video/site-scrub.mp4" muted playsinline preload="auto" aria-hidden="true" tabindex="-1"></video></div></div>
             <div class="base"></div>
           </div>
           <div class="phone phone-b"><div class="ph-scroll"><div class="ph-body mock"><img src="assets/img/phone-2.png" alt="אתר איתמר דרור במובייל" width="712" height="1239"></div></div></div>
@@ -1630,7 +1630,7 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
     function tick(t){
       var dt = last ? Math.min(3,(t-last)/16.67) : 1; last = t;
       K += ((mode==="good"?1:0) - K)*Math.min(1,.07*dt);
-      acc += dt; while(acc>6){ acc -= 6; spawn(); }
+      acc += dt; while(acc>6){ acc -= 6; if(mode==="good") spawn(); }
       var sp = H/360;
       for(var i=parts.length-1;i>=0;i--){ var p = parts[i];
         if(!p.out){
@@ -1649,7 +1649,7 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
     function start(){ if(running || reduceM) return; running = true; last = 0; raf = requestAnimationFrame(tick); }
     function stop(){ running = false; cancelAnimationFrame(raf); }
     function setMode(m){
-      mode = m; outcomes = []; if(!running) { K = m==="good"?1:0; draw(); }
+      mode = m; outcomes = []; if(m==="bad"){ parts = []; rings = []; } if(!running) { K = m==="good"?1:0; draw(); }
       $("#fn-bad").setAttribute("aria-pressed", String(m==="bad"));
       $("#fn-good").setAttribute("aria-pressed", String(m==="good"));
       $("#fn-rate").textContent = expected(m);
