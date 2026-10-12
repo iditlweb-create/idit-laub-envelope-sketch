@@ -78,7 +78,7 @@ section{position:relative}
 .hdr-nav a:hover{color:var(--fg)}
 .notes-toggle{font:500 12px/1 var(--f-mono);background:var(--note);color:var(--note-fg);border:0;border-radius:99px;padding:8px 12px;cursor:pointer}
 .notes-toggle[aria-pressed="false"]{background:transparent;color:var(--muted);outline:1px solid var(--line)}
-@media (max-width:980px){.hdr-nav{display:none}.hdr-in{gap:12px}.notes-toggle{margin-inline-start:auto}.hdr .btn-sm{display:none}}
+@media (max-width:980px){.hdr-nav{display:none}.hdr-in{gap:12px;justify-content:space-between}.hdr .btn-sm{display:none}}
 .progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;height:3px;background:var(--warm);transform:scaleX(0);transform-origin:100% 50%;z-index:60;pointer-events:none}
 
 /* sketch notes */
@@ -854,7 +854,7 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
 @media (max-width:900px){:root{--gutter:15px;--pad-y:30px;--fs-h1:50px;--fs-h2:35px;--fs-body:18px;--hdr:60px}}
 </style>
 
-<div class="page notes-on" dir="rtl" lang="he" id="page">
+<div class="page" dir="rtl" lang="he" id="page">
 
 <div class="loader" id="loader" aria-hidden="true">
   <div class="ld-name"><span class="ld-ch">ע</span><span class="ld-ch">י</span><span class="ld-ch">ד</span><span class="ld-ch">י</span><span class="ld-ch">ת</span><span class="ld-ch ld-sp"></span><span class="ld-ch">ל</span><span class="ld-ch">א</span><span class="ld-ch">ו</span><span class="ld-ch">ב</span></div>
@@ -869,7 +869,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
     <nav class="hdr-nav" aria-label="ניווט ראשי">
       <a href="#system">המעטפת</a><a href="#work-intro">עבודות</a><a href="#method">השיטה</a><a href="#tiers">מסלולים</a><a href="#faq">שאלות</a>
     </nav>
-    <button class="notes-toggle" id="notes-toggle" type="button" aria-pressed="true">הערות סקיצה</button>
     <a class="btn btn-sm btn-accent" href="#contact">לבדיקת התאמה <img class="arr" src="assets/deco/arrow.svg" alt="" aria-hidden="true"></a>
   </div>
 </header>
@@ -901,13 +900,12 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
           <span><b>5</b> תחומים, אחראית אחת</span>
           <span><b dir="ltr">100%</b> מהנכסים בבעלותכם</span>
         </div>
-        <aside class="note"><b>למה</b><span>הפתיחה בשפה של הדף הנוכחי: כותרת שחורה גדולה, שורה בכתב יד באפרסק עם שני הקווים, עיגול זוהר מאחורי המוקאפים וכוכבים. המוקאפים והתגיות שמסתובבות נשארו, ובגלילה המחשב מתקרב.</span></aside>
       </div>
 
       <div class="stage" id="stage" aria-label="מוקאפים של אתרים שבניתי" data-cursor="הזיזו">
         <div class="d-scroll"><div class="d-tilt"><div class="devices">
           <div class="laptop">
-            <div class="lid"><div class="screen shot"><img class="vid-still" src="assets/video/site-first.jpg" alt="אתר נובולה שעיצבתי ובניתי" width="848" height="432" fetchpriority="high"><canvas id="hero-cv" width="848" height="432" aria-hidden="true"></canvas><video id="hero-vid" src="assets/video/site-scrub.mp4" muted playsinline preload="auto" aria-hidden="true" tabindex="-1"></video></div></div>
+            <div class="lid"><div class="screen shot"><img class="vid-still" src="assets/video/site-still.jpg" alt="אתר נובולה שעיצבתי ובניתי" width="1600" height="756" fetchpriority="high"><canvas id="hero-cv" width="848" height="432" aria-hidden="true"></canvas><video id="hero-vid" src="assets/video/site-scrub.mp4" muted playsinline preload="auto" aria-hidden="true" tabindex="-1"></video></div></div>
             <div class="base"></div>
           </div>
           <div class="phone phone-b"><div class="ph-scroll"><div class="ph-body mock"><img src="assets/img/phone-2.png" alt="אתר איתמר דרור במובייל" width="712" height="1239"></div></div></div>
@@ -932,7 +930,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
   <div class="wrap">
     <p class="eyebrow">אם אתם מזדהים</p>
     <p class="mono-text" id="mono-text">יש לכם עסק <span class="k">טוב.</span> לקוחות מרוצים, המלצות מפה לאוזן, עבודה שאתם גאים בה. ובכל זאת, כשמישהו חדש פוגש אתכם ברשת, הוא <span class="k">לא&nbsp;רואה</span> את זה.</p>
-    <aside class="note"><b>למה</b><span>הקורא מזהה את עצמו לפני שמדברים על פתרון. כל מילה נצבעת בזמן הגלילה, אז הקצב שלו קובע את קצב הטקסט.</span></aside>
   </div>
 </section>
 
@@ -989,7 +986,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
         <span class="cl-q">שלושה עסקים. אותה תבנית. איזה מהם אתם?</span>
       </div>
     </article>
-    <aside class="note"><b>למה</b><span>שלושת הכאבים מהדף שלך, ועוד אחד חדש: "הפיצול". הוא מכין את הקורא למעטפת המלאה, כי ברגע שהוא מבין שהבעיה היא ריבוי ספקים, הפתרון הוא אחראית אחת.</span></aside>
   </div>
 </section>
 
@@ -1020,7 +1016,7 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
       <a class="btn btn-accent" href="#system" id="m-cta" hidden>לראות איך פותרים את זה <img class="arr" src="assets/deco/arrow.svg" alt="" aria-hidden="true"></a>
     </div>
   </div>
-  <div class="wrap"><aside class="note"><b>למה</b><span>הזדהות פעילה. מי שסימן שלושה משפטים כבר שכנע את עצמו, והכפתור מוביל אותו ישר למעטפת.</span></aside></div>
+  <div class="wrap"></div>
 </section>
 
 <!-- ================= SYSTEM ================= -->
@@ -1038,7 +1034,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
         <li><span class="n">04</span><div><b>משפך שיווקי</b><p>דף נחיתה, הודעות המשך ותזמון, כך שמתעניין הופך לשיחה.</p></div></li>
         <li><span class="n">05</span><div><b>CRM ואוטומציות</b><p>כל ליד נכנס למקום אחד ומקבל מענה תוך דקות, גם כשאתם עסוקים.</p></div></li>
       </ol>
-      <aside class="note"><b>למה</b><span>בהשראת עמודי שירותים "מסלוליים" שזוכים ב־Awwwards: בגלילה כל רכיב מתחבר לליבה, וכשהמערכת שלמה, פניות זורמות פנימה. הלקוח מבין בלי שמסבירים לו שזה לא "עוד אתר".</span></aside>
     </div>
     <div class="sys-map" id="sys-map" aria-hidden="true">
       <svg viewBox="0 0 100 100"><circle class="sys-ring" cx="50" cy="50" r="40"/><g id="sys-lines"></g><g id="sys-pulses" opacity="0"></g></svg>
@@ -1081,7 +1076,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
         <span class="fn-cap">המחשה. האחוזים במשפך להמחשה בלבד.</span>
       </div>
     </div>
-    <aside class="note"><b>למה</b><span>המשפך מהדף שלך, עכשיו חי: מתחיל בכניסה לאתר ומסתיים במענה. ככה רואים שכל שלב שייך לחלק אחר במעטפת.</span></aside>
 
     <div class="calc" id="calc">
       <div>
@@ -1127,7 +1121,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
       </dl>
       <a id="w-link" class="w-link" href="#" target="_blank" rel="noopener">לאתר החי ↗</a>
       <div class="w-dots" id="w-dots"></div>
-      <aside class="note"><b>למה</b><span>בעיה, החלטה, תוצאה: משפט אחד לכל שלב. המוקאפים הם צילומי המסך מתיקיית הפרויקט; עדיף בהמשך סרטוני גלילה קצרים.</span></aside>
     </div>
     <div class="ring-stage">
       <div class="ring" id="ring"></div>
@@ -1207,7 +1200,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
       </article>
     </div>
     <p class="tiers-foot">המחיר נקבע לפי ההיקף ונסגר בשיחת ההתאמה. אין חבילות מוכנות מראש, ואין סעיפים שמופיעים פתאום בהמשך.</p>
-    <aside class="note"><b>חשוב</b><span>כאן המעטפת הופכת להצעה ברורה, בלי מחירים. לפני שמפרסמים: ודאי שאת יכולה לספק כל רכיב בעצמך או עם שותף קבוע (למשל לקמפיינים), ושיש לך לפחות דוגמה אחת לכל אחד. הכי חזק להבטיח רק מה שכבר הוכחת.</span></aside>
   </div>
 </section>
 
@@ -1279,7 +1271,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
       <figure class="wa"><img src="assets/img/wa/wa10.jpg" alt="המלצת לקוח בוואטסאפ" loading="lazy"></figure>
       <figure class="wa"><img src="assets/img/wa/wa11.jpg" alt="המלצת לקוח בוואטסאפ" loading="lazy"></figure>
     </div>
-    <aside class="note"><b>למה</b><span>הציטוט של רוני פותח, ומתחתיו קיר של הודעות אמיתיות מלקוחות. כמות ההודעות היא ההוכחה.</span></aside>
   </div>
 </section>
 
@@ -1311,7 +1302,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
         <li><b>02</b><span>חוזרת אליכם באותו יום עם זמן לשיחה</span></li>
         <li><b>03</b><span>בשיחה: מה חסר, איזה מסלול מתאים, וטווח מחיר אמיתי</span></li>
       </ol>
-      <aside class="note"><b>למה</b><span>שאלת "מה מעניין אתכם" מראה לך אם הליד מחפש אתר או מערכת. שאלת התקציב והזמנים מסננות לפני השיחה.</span></aside>
     </div>
     <div>
       <form id="lead-form" novalidate>
@@ -1504,16 +1494,6 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
   }
   setSys(SYS.length-1);
 
-  /* ---------- notes toggle ---------- */
-  var page = $("#page"), nt = $("#notes-toggle");
-  nt.addEventListener("click", function(){
-    var on = !page.classList.contains("notes-on");
-    page.classList.toggle("notes-on", on);
-    nt.setAttribute("aria-pressed", on ? "true" : "false");
-    nt.textContent = on ? "הערות סקיצה" : "הצגת הערות";
-    if(window.ScrollTrigger) ScrollTrigger.refresh();
-  });
-
   /* ---------- buttons: fill grows from the entry point ---------- */
   $$(".btn").forEach(function(b){
     b.addEventListener("pointermove",function(e){ var r = b.getBoundingClientRect(); b.style.setProperty("--light-x",(e.clientX-r.left)+"px"); b.style.setProperty("--light-y",(e.clientY-r.top)+"px"); });
@@ -1649,10 +1629,10 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
       for(var i=parts.length-1;i>=0;i--){ var p = parts[i];
         if(!p.out){
           p.y += p.vy*dt*sp*1.6; var yf = p.y/H; p.x = W/2 + segOff(Math.min(3,p.stage)) + p.u*wAt(yf)*W;
-          if(p.stage<3 && yf>Y[p.stage+1]){ p.stage++; if(Math.random() < DROP[mode][p.stage-1]){ p.out = true; p.vx = (p.u>=0?1:-1)*(1.4+Math.random()*1.8); p.vy = -1-Math.random(); } }
-          if(!p.out && yf>=Y[4]){ parts.splice(i,1); rings.push({x:p.x,y:p.y,r:3,a:1}); record(1); continue; }
+          if(p.stage<3 && yf>Y[p.stage+1]){ p.stage++; if(Math.random() < DROP[mode][p.stage-1]){ p.out = true; if(mode==="good"){ p.vx = (p.u>=0?1:-1)*(1.4+Math.random()*1.8); p.vy = -1-Math.random(); } else { p.vx = 0; p.vy = 0; p.fade = true; } } }
+          if(!p.out && yf>=Y[4]){ parts.splice(i,1); if(mode==="good") rings.push({x:p.x,y:p.y,r:3,a:1}); record(1); continue; }
         } else {
-          p.x += p.vx*dt; p.vy += .14*dt; p.y += p.vy*dt; p.a -= .02*dt;
+          if(p.fade){ p.a -= .06*dt; } else { p.x += p.vx*dt; p.vy += .14*dt; p.y += p.vy*dt; p.a -= .02*dt; }
           if(p.a<=0 || p.y>H+10){ parts.splice(i,1); record(0); continue; }
         }
       }
@@ -1745,11 +1725,12 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
   function seekVid(){
     if(!vid || !vid.duration) return;
     var t = Math.max(0, Math.min(vid.duration - .05, vidP.t * vid.duration));
+    if(vidP.t <= .002){ if(cv) cv.classList.remove("on"); }
     if(Math.abs(t - vidLast) < .016) return;
     vidLast = t; vid.currentTime = t;
   }
   var cv = $("#hero-cv"), cvx = cv && cv.getContext("2d");
-  function paintVid(){ if(cvx && vid.readyState >= 2){ cvx.drawImage(vid, 0, 0, cv.width, cv.height); cv.classList.add("on"); } }
+  function paintVid(){ if(!cvx || vid.readyState < 2) return; var on = vidP.t > .002; cv.classList.toggle("on", on); if(on) cvx.drawImage(vid, 0, 0, cv.width, cv.height); }
   if(vid){ vid.pause(); vid.addEventListener("loadedmetadata", seekVid); vid.addEventListener("seeked", paintVid); vid.addEventListener("loadeddata", paintVid); }
   /* scale + offset that make the laptop screen fill the viewport under the header (measured without transforms) */
   function zoomFit(){
