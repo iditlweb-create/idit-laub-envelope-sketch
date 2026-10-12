@@ -850,6 +850,12 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
 .lid canvas{opacity:0}
 .lid canvas.on{opacity:1}
 .lid video{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* מובייל: בלי הכיתוב Idit Laub ברקע ובלי הכפתור "לראות את המערכת" בפתיחה */
+@media (max-width:900px){
+  .hero .watermark{display:none}
+  .hero-sys-btn{display:none}
+}
 /* מובייל לפי כללי העיצוב: 15px/30px, כותרות 50/35, טקסט 18 */
 @media (max-width:900px){:root{--gutter:15px;--pad-y:30px;--fs-h1:50px;--fs-h2:35px;--fs-body:18px;--hdr:60px}}
 </style>
@@ -893,7 +899,7 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
         <p class="hero-sub">רוב העסקים מחזיקים מעצב, בונה אתרים ומישהו לאוטומציות, וכל אחד מושך לכיוון אחר. אצלי האסטרטגיה, המיתוג, האתר והמערכות נבנים יחד, סביב מטרה אחת: יותר פניות מהלקוחות הנכונים.</p>
         <div class="hero-ctas">
           <a class="btn btn-accent btn-mag" href="#contact">לשיחת ייעוץ חינם – 15 דקות <img class="arr" src="assets/deco/arrow.svg" alt="" aria-hidden="true"></a>
-          <a class="btn btn-ghost" href="#system">לראות את המערכת <img class="arr" src="assets/deco/arrow.svg" alt="" aria-hidden="true"></a>
+          <a class="btn btn-ghost hero-sys-btn" href="#system">לראות את המערכת <img class="arr" src="assets/deco/arrow.svg" alt="" aria-hidden="true"></a>
         </div>
         <div class="hero-proof">
           <span><b dir="ltr">+30</b> עסקים עלו לאוויר</span>
@@ -1732,6 +1738,16 @@ input[type=text],input[type=email],input[type=tel],input[type=url],textarea{back
   var cv = $("#hero-cv"), cvx = cv && cv.getContext("2d");
   function paintVid(){ if(!cvx || vid.readyState < 2) return; var on = vidP.t > .002; cv.classList.toggle("on", on); if(on) cvx.drawImage(vid, 0, 0, cv.width, cv.height); }
   if(vid){ vid.pause(); vid.addEventListener("loadedmetadata", seekVid); vid.addEventListener("seeked", paintVid); vid.addEventListener("loadeddata", paintVid); }
+  /* iPhone Safari ignores preload and won't decode frames for seeking until the video has played once:
+     start it silently, stop right away, then let the scroll drive it */
+  var vidReady = false;
+  function wakeVid(){
+    if(!vid || vidReady) return;
+    var p = vid.play();
+    var done = function(){ vidReady = true; vid.pause(); vidLast = -1; seekVid(); };
+    if(p && p.then) p.then(done).catch(function(){}); else done();
+  }
+  if(vid){ vid.load(); wakeVid(); ["touchstart","pointerdown","scroll"].forEach(function(ev){ window.addEventListener(ev, wakeVid, {once:true, passive:true}); }); }
   /* scale + offset that make the laptop screen fill the viewport under the header (measured without transforms) */
   function zoomFit(){
     var lap = $(".laptop"), lid = $(".lid"), r = stage.getBoundingClientRect();
